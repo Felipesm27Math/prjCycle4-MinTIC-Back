@@ -1,0 +1,16 @@
+{
+  "name": "prj-nafc-code-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Felipesm27Math <felipesm27@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
