@@ -8,14 +8,75 @@ import {
   Enum_TipoObjetivo,
 } from "./models/enums/enums";
 import { ProjectModel } from "./models/project/project";
+import { AdvanceModel } from "./models/advances/advances";
 
 const main = async () => {
   await connectDB();
+
+  //HU 21
+  // const checkAdvance = await AdvanceModel.find({project:'6197dd28c095c0a153fbe27c'});
+  // console.log("Los avances del proyecto son", checkAdvance);
+
+  //HU 22
+  // const addAdvance = await AdvanceModel.create({
+  //   proyecto: '6197dd28c095c0a153fbe27c',
+  //   creadoPor: '6197dd19c095c0a153fbe278',
+  //   fecha: Date.now(),
+  //   descripcion: ['Este es el primer avance que hago yo'],
+  // });
+
+  //HU 23
+  //const updateAdvance = await AdvanceModel.findOneAndUpdate({id:'6197ee3f02399f3904bd2940'},{descripcion: 'De esta manera modifico mi avance'});
 
 
 };
 
 main();
+
+//Create user, project and one advance
+
+// const userAdvance = await UserModel.create({
+//   nombre: 'Felipe Supelano',
+//   correo: 'felipesm27@gmail.com',
+//   identificacion: '1015446175',
+//   rol : Enum_Rol.ESTUDIANTE,
+//   estado: Enum_EstadoUsuario.AUTORIZADO,
+// });
+
+//   const createProject = await ProjectModel.create({
+//   nombre: "Prueba proyecto avance",
+//   presupuesto: 2500000,
+//   fechaInicio: Date.now(),
+//   fechaFin: new Date("2022-10-17"),
+//   lider: '61957e4707b6e97d9a3a3306',
+//   estado: Enum_EstadoProyecto.ACTIVO,
+//   fase: Enum_FaseProyecto.INICIADO,
+//   objetivos: [
+//     {
+//       descripcion: "Practica HU 21 a 23",
+//       tipo: Enum_TipoObjetivo.GENERAL,
+//     },
+//     {
+//       descripcion: "1. Crear usuario y proyecto",
+//       tipo: Enum_TipoObjetivo.ESPECIFICO,
+//     },
+//     {
+//       descripcion: "2. Crear avance",
+//       tipo: Enum_TipoObjetivo.ESPECIFICO,
+//     },
+//   ],
+// });
+
+// const advanceProject = await AdvanceModel.create({
+//   proyecto: createProject._id,
+//   creadoPor: userAdvance._id,
+//   fecha: Date.now(),
+//   descripcion:['Este es el primer avance'],
+// });
+
+
+
+
 
 // Creat user, project, assign leader and write objectives
     //   const usuarioProject = await UserModel.create({
@@ -114,3 +175,12 @@ main();
 // }).catch((e) => {
 //     console.error('User did not delete',e);
 // });
+
+
+//HU 21 Como estudiante
+// Como estudiante 
+// Dado que mi inscripción a un proyecto fue aceptada
+// Cuando requiera listar los avances de un proyecto en el que estoy inscrito
+// Entonces podré ver la lista de los avances del proyecto registrados
+
+

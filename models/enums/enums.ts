@@ -28,8 +28,9 @@ enum Enum_Rol {
   }
   
   enum Enum_EstadoInscripcion {
-    aceptada = 'aceptada',
-    rechazada = 'rechazada',
+    ACEPTADA = 'ACEPTADA',
+    RECHAZADA = 'RECHAZADA',
+    ESPERA = 'EN_ESPERA',
   }
   
   export {
