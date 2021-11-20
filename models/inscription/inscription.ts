@@ -34,7 +34,6 @@ const inscriptionSchema = new Schema<Inscription>({
     },
     fechaSalida:{
         type:Date,
-        required: true,
     }
 });
 

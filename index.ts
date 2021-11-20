@@ -1,33 +1,41 @@
 import connectDB from "./db/db";
-import { UserModel } from "./models/users/user";
+import { UserModel} from "./models/users/user";
 import {
   Enum_Rol,
   Enum_EstadoUsuario,
   Enum_EstadoProyecto,
   Enum_FaseProyecto,
   Enum_TipoObjetivo,
+  Enum_EstadoInscripcion,
 } from "./models/enums/enums";
 import { ProjectModel } from "./models/project/project";
 import { AdvanceModel } from "./models/advances/advances";
+import { InscriptionModel } from "./models/inscription/inscription";
 
 const main = async () => {
   await connectDB();
 
-  //HU 21
+  
+
+  //db.usuarios.insertOne({id:1096187614,nombre:"Victor Quintero",contrasena:"1234",correo:"victor@gmail.com", rol:"administrador",estado:"pendiente (default)",fechaCreacion: Date()})
+
+
+  // HU 21
   // const checkAdvance = await AdvanceModel.find({project:'6197dd28c095c0a153fbe27c'});
   // console.log("Los avances del proyecto son", checkAdvance);
 
+  //db.avances.find({id:'6197dd28c095c0a153fbe27c'})
+
   //HU 22
   // const addAdvance = await AdvanceModel.create({
-  //   proyecto: '6197dd28c095c0a153fbe27c',
-  //   creadoPor: '6197dd19c095c0a153fbe278',
+  //   proyecto: '_id',
+  //   creadoPor: '_id.Usuario',
   //   fecha: Date.now(),
   //   descripcion: ['Este es el primer avance que hago yo'],
   // });
 
   //HU 23
-  //const updateAdvance = await AdvanceModel.findOneAndUpdate({id:'6197ee3f02399f3904bd2940'},{descripcion: 'De esta manera modifico mi avance'});
-
+  //const updateAdvance = await AdvanceModel.findOneAndUpdate({id:'6197ee3f02399f3904bd2940'},{$set :{descripcion: 'De esta manera modifico mi avance'}});
 
 };
 
