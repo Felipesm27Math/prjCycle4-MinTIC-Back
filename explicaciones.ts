@@ -1,5 +1,5 @@
 import connectDB from "./db/db";
-import { UserModel} from "./models/users/user";
+import { UserModel} from "./models/usuarios/usuario";
 import {
   Enum_Rol,
   Enum_EstadoUsuario,
@@ -8,9 +8,9 @@ import {
   Enum_TipoObjetivo,
   Enum_EstadoInscripcion,
 } from "./models/enums/enums";
-import { ProjectModel } from "./models/project/project";
-import { AdvanceModel } from "./models/advances/advances";
-import { InscriptionModel } from "./models/inscription/inscription";
+import { ProjectModel } from "./models/proyectos/proyecto";
+import { AdvanceModel } from "./models/avances/avance";
+import { InscriptionModel } from "./models/inscripciones/inscripcion";
 
 const main = async () => {
   await connectDB();
