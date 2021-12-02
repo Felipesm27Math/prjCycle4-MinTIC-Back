@@ -48,4 +48,4 @@ const resolversUsuario = {
   },
 };
 
-export {resolversUsuario}
+export {resolversUsuario};
