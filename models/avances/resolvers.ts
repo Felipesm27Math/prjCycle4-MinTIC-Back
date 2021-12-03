@@ -1,4 +1,3 @@
-import { Query } from "mongoose";
 import { AdvanceModel } from "./avance";
 
 const resolversAvance = {
@@ -10,7 +9,7 @@ const resolversAvance = {
         BuscarAvances: async (parent,args) => {
             const avanceBuscado = await AdvanceModel.find({proyecto: args._id}).populate('proyecto').populate('creadoPor');
             return avanceBuscado;
-        }
+        },
     },
     Mutation:{
         crearAvance: async (parent,args) =>{
