@@ -20,12 +20,10 @@ const advanceSchema = new Schema<Advance>({
         type: Date,
         required:true,
     },
-    descripcion: [
-        {
+    descripcion: {
             type: String,
             required:true,
-        },
-    ],
+    },
     observaciones: [
         {
             type: String,
