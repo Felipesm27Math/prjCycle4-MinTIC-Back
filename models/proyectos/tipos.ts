@@ -36,8 +36,8 @@ const tiposProyecto = gql`
         fechaInicio: Date!
         fechaFin: Date!
         lider:String!
-        estado: Enum_EstadoProyecto!
-        fase: Enum_FaseProyecto!
+        estado: Enum_EstadoProyecto
+        fase: Enum_FaseProyecto
         objetivos: [crearObjetivo]
     ):Proyecto
   }

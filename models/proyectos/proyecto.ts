@@ -29,7 +29,6 @@ interface Project {
       },
       fechaFin:{
           type: Date,
-          required:true,
       },
       estado:{
           type:String,
