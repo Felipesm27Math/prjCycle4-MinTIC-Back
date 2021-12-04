@@ -22,6 +22,13 @@ type Mutation{
         proyecto: String!
         creadoPor:String!
     ):Avance
+    editarAvance(
+        _id: String!
+        fecha: Date!
+        descripcion: String!
+        proyecto: String!
+        creadoPor:String!
+    ):Avance
 }
 `;
 

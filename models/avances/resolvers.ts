@@ -21,6 +21,14 @@ const resolversAvance = {
             });
             return avanceCreado;
         },
+
+        editarAvance: async (parent,args) => {
+            const avanceEditado = await AdvanceModel.findOneAndUpdate(args._id,{
+                fecha:args.fecha,
+                descripcion:args.descripcion,
+                creadoPor: args.creadoPor,
+            })
+        }
     },
 };
 

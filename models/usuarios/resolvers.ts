@@ -17,6 +17,7 @@ const resolversUsuario = {
           const usuarioCreado = await UserModel.create({
               nombre:args.nombre,
               correo: args.correo,
+              contrasena: args.contrasena,
               identificacion: args.identificacion,
               rol: args.rol,
           });
@@ -31,6 +32,7 @@ const resolversUsuario = {
           const usuarioEditado = await UserModel.findOneAndUpdate(args._id,{
               nombre:args.nombre,
               correo:args.correo,
+              contrasena: args.contrasena,
               identificacion:args.identificacion,
           });
           return usuarioEditado;
