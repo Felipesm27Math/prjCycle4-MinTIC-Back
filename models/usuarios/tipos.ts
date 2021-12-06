@@ -9,10 +9,14 @@ const tiposUsuario = gql`
     rol: Enum_Rol!
     estado: Enum_EstadoUsuario
   }
+  """ tipos de consultas que voy a realizar """
   type Query {
     Usuarios: [Usuario]
     Usuario(_id: String!): Usuario
+    BuscarUsuarioEstudiante(rol: Enum_Rol): [Usuario]
+    
   }
+  """ operaciones que puedo hacer con los documentos de la bd """
   type Mutation {
 
     crearUsuario(
@@ -32,6 +36,11 @@ const tiposUsuario = gql`
       estado: Enum_EstadoUsuario!
     ): Usuario
     
+    editarEstadoEstudiante(
+      _id: String!
+      estado: Enum_EstadoUsuario!
+    ): Usuario
+
     eliminarUsuario(_id: String, correo: String): Usuario
   }
 `;

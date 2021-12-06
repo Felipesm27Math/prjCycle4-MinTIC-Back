@@ -29,7 +29,7 @@ interface Project {
       },
       fechaFin:{
           type: Date,
-          required:true,
+          required:false,
       },
       estado:{
           type:String,

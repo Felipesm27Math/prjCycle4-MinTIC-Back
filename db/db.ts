@@ -2,10 +2,10 @@ import { connect } from "mongoose";
 
 const connectDB = async () => {
   return await connect(process.env.DATABASE_URL).then(() =>{
-      console.log('Successful connection');
+      console.log('Conexion exitosa :D');
   })
   .catch((e) => {
-      console.error('Error connection to db', e);
+      console.error('Error coneccion a la bd :( ', e);
   });
 };
 

@@ -1,13 +1,15 @@
 import { gql } from "apollo-server-express";
 
 const tiposProyecto = gql`
-
+""" son de tipo array y si los quiero usar de esa manera tengo definirlos como tipos 
+los tipos de usan para las respuestas"""
   type Objetivo {
     _id: ID!
     descripcion:String!
     tipo:Enum_TipoObjetivo!
   }
-
+""" y tambien tengo que definir el input y lo puedo usar para crear el objecto 
+y los input para las entradas"""
   input crearObjetivo{
     descripcion:String!
     tipo:Enum_TipoObjetivo!
@@ -18,7 +20,7 @@ const tiposProyecto = gql`
     nombre: String!
     presupuesto: Float!
     fechaInicio: Date!
-    FechaFin: Date!
+    FechaFin: Date
     lider: Usuario!
     estado: Enum_EstadoProyecto!
     fase: Enum_FaseProyecto!
@@ -34,7 +36,7 @@ const tiposProyecto = gql`
         nombre: String!
         presupuesto: Float!
         fechaInicio: Date!
-        fechaFin: Date!
+        fechaFin: Date
         lider:String!
         estado: Enum_EstadoProyecto!
         fase: Enum_FaseProyecto!
