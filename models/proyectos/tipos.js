@@ -45,15 +45,12 @@ const tiposProyecto = gql`
         objetivos: [crearObjetivo]
     ):Proyecto
 
-    editarEstadoP(
+    editarEstadoFase(
       _id: String!
-      estado:Enum_EstadoProyecto!
+      estado: Enum_EstadoProyecto
+      fase: Enum_FaseProyecto
     ):Proyecto
 
-    editarFaseP(
-      _id: String!
-      fase: Enum_FaseProyecto!
-    ):Proyecto
 
     editarProyectoLider(
       _id: String!

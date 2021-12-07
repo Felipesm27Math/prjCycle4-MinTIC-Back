@@ -49,7 +49,23 @@ const {Schema,model} = mongoose;
                 },
             },
       ],
+  },{
+    toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+    toObject: { virtuals: true } // So `console.log()` and other functions that use `toObject()` include virtuals
+  }
+  );
+
+  prjSchema.virtual('avances',{
+      ref:'avances',
+      localField: 'id',
+      foreignField: 'proyecto',
   });
+
+  prjSchema.virtual('inscripciones',{
+    ref:'inscritos',
+    localField: 'id',
+    foreignField: 'proyecto',
+});
 
   const ProjectModel = model('proyecto',prjSchema,'proyectos');
   export {ProjectModel};

@@ -3,7 +3,7 @@ import { ProjectModel } from "./proyecto.js";
 const resolversProyecto = {
     Query:{
         Proyectos: async (parent,args) => {
-            const proyectos = await ProjectModel.find().populate('lider');
+            const proyectos = await ProjectModel.find().populate('avances').populate('inscripciones');
             return proyectos;
         },
         ProyectoLider: async (parent,args) => {
@@ -21,22 +21,23 @@ const resolversProyecto = {
                 lider: args.lider,
                 objetivos: args.objetivos,
             });
-            if (Object.keys(args).includes)
+            if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
+                proyectoCreado.estado = args.estado
+                proyectoCreado.fase = args.fase;
+            }
             return proyectoCreado;
         },
 
-        editarEstadoP: async (parent,args) => {
-            const estadoEditado = await ProjectModel.findOneAndUpdate(args._id, {
+        editarEstadoFase: async (parent,args) => {
+            const estadofaseEditado = await ProjectModel.findOneAndUpdate(args._id, {
                 estado: args.estado,
-            });
-            return estadoEditado;
-        },
-
-        editarFaseP: async (parent,args) => {
-            const faseEditada = await ProjectModel.findOneAndUpdate(args._id, {
                 fase: args.fase,
             });
-            return faseEditada;
+            if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
+                estadofaseEditado.estado = args.estado
+                estadofaseEditado.fase = args.fase;
+            }
+            return estadofaseEditado;
         },
 
         editarProyectoLider: async (parent,args) => {

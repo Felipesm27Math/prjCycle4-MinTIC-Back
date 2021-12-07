@@ -38,7 +38,9 @@ const resolversUsuario = {
               correo:args.correo,
               contrasena: args.contrasena,
               identificacion:args.identificacion,
+              rol: args.rol,
           });
+          return usuarioEditado;
       },
 
       editarEstadoUsuario: async (parent,args) => {
