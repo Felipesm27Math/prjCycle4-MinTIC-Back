@@ -34,7 +34,7 @@ const inscriptionSchema = new Schema<Inscription>({
     },
     fechaSalida:{
         type:Date,
-    }
+    },
 });
 
 const InscriptionModel = model ('inscrito', inscriptionSchema,'inscritos');

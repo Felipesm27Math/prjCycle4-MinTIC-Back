@@ -7,8 +7,12 @@ const resolversUsuario = {
           return usuarios;
       },     
       Usuario: async (parent,args) => {
-          const usuario = await UserModel.findOne({_id:args._id});
+          const usuario = await UserModel.findOne({correo:args.correo,contrasena:args.contrasena});
           return usuario;
+      },
+      UsuarioEstudiante: async (parent,args) => {
+          const estudiantesEncontrados = await UserModel.find({rol: args.rol});
+          return estudiantesEncontrados;
       },
      
   },
@@ -28,15 +32,34 @@ const resolversUsuario = {
           return  usuarioCreado;   
       },
 
-      editarUsuario: async (parent,args) => {
+      editarDatosUsuario: async (parent,args) => {
           const usuarioEditado = await UserModel.findOneAndUpdate(args._id,{
               nombre:args.nombre,
               correo:args.correo,
               contrasena: args.contrasena,
               identificacion:args.identificacion,
           });
-          return usuarioEditado;
       },
+
+      editarEstadoUsuario: async (parent,args) => {
+          const unUsuarioEditado = await UserModel.findOneAndUpdate(args._id,{
+              estado:args.estado,
+          });
+          if (Object.keys(args).includes('estado')) {
+            unUsuarioEditado.estado = args.estado;
+        }
+          return unUsuarioEditado;
+      },
+
+      aceptarEstudiante: async (parent,args) => {
+        const estudianteAceptado = await UserModel.findOneAndUpdate(args.rol, args._id,{
+            estado:args.estado,
+        });
+        if (Object.keys(args).includes('estado')) {
+            estudianteAceptado.estado = args.estado;
+        }
+        return estudianteAceptado;
+    },
       
       eliminarUsuario: async (parent,args) => {
         if (Object.keys(args).includes('_id')) {

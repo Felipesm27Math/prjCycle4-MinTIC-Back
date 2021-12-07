@@ -9,7 +9,7 @@ const resolversAvance = {
         BuscarAvances: async (parent,args) => {
             const avanceBuscado = await AdvanceModel.find({proyecto: args._id}).populate('proyecto').populate('creadoPor');
             return avanceBuscado;
-        },
+        },  
     },
     Mutation:{
         crearAvance: async (parent,args) =>{
@@ -27,8 +27,10 @@ const resolversAvance = {
                 fecha:args.fecha,
                 descripcion:args.descripcion,
                 creadoPor: args.creadoPor,
-            })
-        }
+                observaciones: args.observaciones,
+            });
+            return avanceEditado;
+        },
     },
 };
 

@@ -12,7 +12,8 @@ const tiposUsuario = gql`
   }
   type Query {
     Usuarios: [Usuario]
-    Usuario(_id: String!): Usuario
+    Usuario(correo: String!,contrasena:String!): Usuario
+    UsuarioEstudiante(rol: Enum_Rol!): [Usuario]
   }
   type Mutation {
 
@@ -25,7 +26,7 @@ const tiposUsuario = gql`
       estado: Enum_EstadoUsuario
     ): Usuario
 
-    editarUsuario(
+    editarDatosUsuario(
       _id: String!
       nombre: String!
       identificacion: String!
@@ -34,6 +35,17 @@ const tiposUsuario = gql`
       rol: Enum_Rol!
       estado: Enum_EstadoUsuario!
     ): Usuario
+
+    editarEstadoUsuario(
+      _id: String!
+      estado: Enum_EstadoUsuario!
+    ):Usuario
+
+    aceptarEstudiante(
+      _id: String!
+      rol: Enum_Rol!
+      estado: Enum_EstadoUsuario!
+    ):Usuario
     
     eliminarUsuario(_id: String, correo: String): Usuario
   }

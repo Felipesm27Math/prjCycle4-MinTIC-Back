@@ -6,7 +6,7 @@ interface Advance {
     proyecto: Schema.Types.ObjectId;
     fecha: Date;
     descripcion: string;
-    observaciones:[string];
+    observaciones:string;
     creadoPor: Schema.Types.ObjectId;
 }
 
@@ -24,11 +24,9 @@ const advanceSchema = new Schema<Advance>({
             type: String,
             required:true,
     },
-    observaciones: [
-        {
+    observaciones:{
             type: String,
-        },
-    ],
+    },
     creadoPor: {
         type: Schema.Types.ObjectId,
         required:true,

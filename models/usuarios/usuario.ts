@@ -5,6 +5,7 @@ interface User {
     nombre:string;
     //password:string;
     correo: string;
+    contrasena:string;
     identificacion:string;
     rol:Enum_Rol;
     estado:Enum_EstadoUsuario;
@@ -28,6 +29,10 @@ const userSchema = new Schema<User>({
         unique:true,
     },
     nombre:{
+        type:String,
+        required:true,
+    },
+    contrasena:{
         type:String,
         required:true,
     },
