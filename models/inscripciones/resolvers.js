@@ -1,4 +1,4 @@
-import { InscriptionModel } from "./inscripcion";
+import { InscriptionModel } from "./inscripcion.js";
 
 const resolversInscripcion= {
     Query:{
