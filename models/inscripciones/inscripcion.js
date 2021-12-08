@@ -28,5 +28,5 @@ const inscriptionSchema = new Schema({
     },
 });
 
-const InscriptionModel = model ('inscrito', inscriptionSchema,'inscritos');
+const InscriptionModel = model ('inscrito', inscriptionSchema);
 export {InscriptionModel};

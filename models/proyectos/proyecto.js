@@ -56,16 +56,16 @@ const {Schema,model} = mongoose;
   );
 
   prjSchema.virtual('avances',{
-      ref:'avances',
+      ref:'avance',
       localField: 'id',
       foreignField: 'proyecto',
   });
 
   prjSchema.virtual('inscripciones',{
-    ref:'inscritos',
+    ref:'inscrito',
     localField: 'id',
     foreignField: 'proyecto',
 });
 
-  const ProjectModel = model('proyecto',prjSchema,'proyectos');
+  const ProjectModel = model('proyecto',prjSchema);
   export {ProjectModel};
