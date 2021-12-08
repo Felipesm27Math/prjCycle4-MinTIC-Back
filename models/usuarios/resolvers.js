@@ -39,14 +39,14 @@ const resolversUsuario = {
               contrasena: args.contrasena,
               identificacion:args.identificacion,
               rol: args.rol,
-          });
+          },{new:true});
           return usuarioEditado;
       },
 
       editarEstadoUsuario: async (parent,args) => {
           const unUsuarioEditado = await UserModel.findOneAndUpdate(args._id,{
               estado:args.estado,
-          });
+          },{new:true});
           if (Object.keys(args).includes('estado')) {
             unUsuarioEditado.estado = args.estado;
         }
@@ -56,7 +56,7 @@ const resolversUsuario = {
       aceptarEstudiante: async (parent,args) => {
         const estudianteAceptado = await UserModel.findOneAndUpdate(args.rol, args._id,{
             estado:args.estado,
-        });
+        },{new:true});
         if (Object.keys(args).includes('estado')) {
             estudianteAceptado.estado = args.estado;
         }

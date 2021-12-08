@@ -28,7 +28,7 @@ const resolversAvance = {
                 descripcion:args.descripcion,
                 creadoPor: args.creadoPor,
                 observaciones: args.observaciones,
-            });
+            },{new:true});
             return avanceEditado;
         },
     },

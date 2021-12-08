@@ -25,7 +25,7 @@ const resolversInscripcion= {
             const inscripcionEditada = await InscriptionModel.findByIdAndUpdate(args._id,{
                estado: args.estado,
                fechaIngreso: Date.now(),
-            });
+            },{new:true});
             if (Object.keys(args).includes('estado')) {
                 inscripcionEditada.estado = args.estado;
             }

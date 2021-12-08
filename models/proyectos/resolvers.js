@@ -32,7 +32,7 @@ const resolversProyecto = {
             const estadofaseEditado = await ProjectModel.findOneAndUpdate(args._id, {
                 estado: args.estado,
                 fase: args.fase,
-            });
+            },{new:true});
             if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
                 estadofaseEditado.estado = args.estado
                 estadofaseEditado.fase = args.fase;
@@ -45,7 +45,7 @@ const resolversProyecto = {
                 nombre:args.nombre,
                 presupuesto: args.presupuesto,
                 objetivos: args.objetivos,
-            });
+            },{new:true});
             return proyectoLiderEditado;
         },
     },
