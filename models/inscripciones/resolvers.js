@@ -17,15 +17,14 @@ const resolversInscripcion= {
             const inscripcionCreada = await InscriptionModel.create({
                estudiante: args.estudiante,
                proyecto: args.proyecto,
-               fechaIngreso: args.fechaIngreso,
-               estado: args.estado,
             });
             return inscripcionCreada;
         },
 
         editarInscripcion: async (parent,args) =>{
-            const inscripcionEditada = await InscriptionModel.findOneAndUpdate(args._id,{
+            const inscripcionEditada = await InscriptionModel.findByIdAndUpdate(args._id,{
                estado: args.estado,
+               fechaIngreso: Date.now(),
             });
             if (Object.keys(args).includes('estado')) {
                 inscripcionEditada.estado = args.estado;

@@ -22,7 +22,6 @@ const inscriptionSchema = new Schema({
     },
     fechaIngreso: {
         type:Date,
-        required: true,
     },
     fechaSalida:{
         type:Date,

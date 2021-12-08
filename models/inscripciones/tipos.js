@@ -6,7 +6,7 @@ const tiposInscripcion = gql`
     _id: ID!
     estudiante: Usuario!
     proyecto: Proyecto!
-    fechaIngreso: Date!
+    fechaIngreso: Date
     fechaSalida: Date
     estado: Enum_EstadoInscripcion
   }
@@ -21,9 +21,6 @@ const tiposInscripcion = gql`
     crearInscripcion(
         estudiante: String!
         proyecto: String!
-        fechaIngreso: Date!
-        fechaSalida: Date
-        estado: Enum_EstadoInscripcion
     ): Inscripcion
 
     editarInscripcion(
