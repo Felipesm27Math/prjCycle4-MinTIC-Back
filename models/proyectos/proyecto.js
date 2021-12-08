@@ -57,13 +57,13 @@ const {Schema,model} = mongoose;
 
   prjSchema.virtual('avances',{
       ref:'avance',
-      localField: 'id',
+      localField: '_id',
       foreignField: 'proyecto',
   });
 
   prjSchema.virtual('inscripciones',{
     ref:'inscrito',
-    localField: 'id',
+    localField: '_id',
     foreignField: 'proyecto',
 });
 
