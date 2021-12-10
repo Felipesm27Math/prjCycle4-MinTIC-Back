@@ -1,4 +1,5 @@
 import { UserModel } from './usuario.js';
+import bcrypt from 'bcrypt';
 
 const resolversUsuario = {
   Query:{
@@ -17,11 +18,12 @@ const resolversUsuario = {
      
   },
   Mutation:{
-      crearUsuario: async (parent,args) => {
+      crearUsuario: async (parent,args) => { const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(args.contrasena, salt);
           const usuarioCreado = await UserModel.create({
               nombre:args.nombre,
               correo: args.correo,
-              contrasena: args.contrasena,
+              contrasena: hashedPassword,
               identificacion: args.identificacion,
               rol: args.rol,
           });
@@ -36,7 +38,7 @@ const resolversUsuario = {
           const usuarioEditado = await UserModel.findOneAndUpdate(args._id,{
               nombre:args.nombre,
               correo:args.correo,
-              contrasena: args.contrasena,
+              
               identificacion:args.identificacion,
               rol: args.rol,
           },{new:true});

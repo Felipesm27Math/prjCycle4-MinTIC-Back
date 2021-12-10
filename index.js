@@ -24,6 +24,6 @@ app.listen({port:process.env.PORT || 4000},async()=>{
 
     server.applyMiddleware({app});
 
-    console.log('Server on');
+    console.log('Servidor Conectado :D');
     
 });
