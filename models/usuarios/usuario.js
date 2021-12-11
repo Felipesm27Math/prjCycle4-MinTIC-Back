@@ -13,16 +13,16 @@ const userSchema = new Schema({
             message: 'The email format is wrong',
         },
     },
+    password:{
+        type:String,
+        required:true,
+    },
     identificacion:{
         type:String,
         required:true,
         unique:true,
     },
     nombre:{
-        type:String,
-        required:true,
-    },
-    contrasena:{
         type:String,
         required:true,
     },
