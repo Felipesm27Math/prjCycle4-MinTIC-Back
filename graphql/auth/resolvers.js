@@ -28,6 +28,26 @@ const resolversAutenticar = {
                 }),
             };
         },
+
+        login: async (parent,args) => {
+            const usuarioEncontrado = await UserModel.findOne({correo:args.correo});
+            
+            if(await bcrypt.compare(args.password,usuarioEncontrado.password)){
+                return {
+                    token: generateToken({
+                        _id:usuarioEncontrado._id,
+                        nombre:usuarioEncontrado.nombre,
+                        correo:usuarioEncontrado.correo,
+                        identificacion:usuarioEncontrado.identificacion,
+                        rol:usuarioEncontrado.rol,
+                    }),
+                };
+            };
+        },
+
+        valiarToken: async (parent,args,context) => {
+            console.log(context);
+        }
     },
 };
 

@@ -16,6 +16,13 @@ const tiposAutenticar = gql`
             rol: Enum_Rol!
             estado: Enum_EstadoUsuario
         ):Token!
+
+        login(
+            correo: String!
+            password: String!
+        ):Token
+
+        valiarToken:Token
     }
 `;
 
