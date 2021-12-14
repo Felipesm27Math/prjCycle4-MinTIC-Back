@@ -16,10 +16,7 @@ const resolversProyecto = {
             const proyectoCreado = await ProjectModel.create({
                 nombre:args.nombre,
                 presupuesto: args.presupuesto,
-                fechaInicio: args.fechaInicio,
-                fechaFin: args.fechaFin,
                 lider: args.lider,
-                objetivos: args.objetivos,
             });
             if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
                 proyectoCreado.estado = args.estado
@@ -48,6 +45,19 @@ const resolversProyecto = {
             },{new:true});
             return proyectoLiderEditado;
         },
+
+        crearObjetivo: async (parent,args) => {
+            const proyectoObjetivoCreado = await ProjectModel.findByIdAndUpdate(args.idProyecto,{
+                $addToSet:{
+                    objetivos:{
+                        descripcion:args.descripcion,
+                        tipo: args.tipo,
+                    },
+                },
+            });
+            return proyectoObjetivoCreado;
+        },
+        
     },
 };
 

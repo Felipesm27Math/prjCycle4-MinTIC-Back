@@ -18,10 +18,11 @@ const resolversUsuario = {
   },
   Mutation:{
       crearUsuario: async (parent,args) => {
+
           const usuarioCreado = await UserModel.create({
               nombre:args.nombre,
               correo: args.correo,
-              contrasena: args.contrasena,
+              password: args.password,
               identificacion: args.identificacion,
               rol: args.rol,
           });

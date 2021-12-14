@@ -22,7 +22,7 @@ const tiposAutenticar = gql`
             password: String!
         ):Token
 
-        valiarToken:Token
+        refrescarToken:Token
     }
 `;
 
