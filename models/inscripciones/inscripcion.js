@@ -18,7 +18,6 @@ const inscriptionSchema = new Schema({
         type: String,
         enum: ['ACEPTADA','RECHAZADA','EN_ESPERA'],
         default: 'EN_ESPERA',
-        required: true,
     },
     fechaIngreso: {
         type:Date,

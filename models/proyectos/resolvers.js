@@ -3,7 +3,14 @@ import { ProjectModel } from "./proyecto.js";
 const resolversProyecto = {
     Query:{
         Proyectos: async (parent,args) => {
-            const proyectos = await ProjectModel.find().populate('avances').populate('inscripciones');
+            const proyectos = await ProjectModel.find().populate([
+                {
+                    path:"avances",
+                },
+                {
+                    path:"inscripciones",
+                }
+            ]);
             return proyectos;
         },
         ProyectoLider: async (parent,args) => {
@@ -18,10 +25,6 @@ const resolversProyecto = {
                 presupuesto: args.presupuesto,
                 lider: args.lider,
             });
-            if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
-                proyectoCreado.estado = args.estado
-                proyectoCreado.fase = args.fase;
-            }
             return proyectoCreado;
         },
 
@@ -34,7 +37,7 @@ const resolversProyecto = {
                 estadofaseEditado.estado = args.estado
                 estadofaseEditado.fase = args.fase;
             }
-            return estadofaseEditado;
+            return estadofaseEditado;  
         },
 
         editarProyectoLider: async (parent,args) => {

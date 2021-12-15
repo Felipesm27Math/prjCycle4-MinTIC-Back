@@ -12,7 +12,6 @@ const advanceSchema = new Schema({
     },
     fecha: {
         type: Date,
-        required:true,
     },
     descripcion: {
             type: String,

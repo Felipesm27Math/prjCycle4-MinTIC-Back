@@ -7,7 +7,6 @@ const {Schema,model} = mongoose;
       nombre:{
           type:String,
           required:true,
-          unique:true,
       },
       presupuesto:{
           type: Number,
@@ -15,11 +14,9 @@ const {Schema,model} = mongoose;
       },
       fechaInicio:{
           type:Date,
-          required:true,
       },
       fechaFin:{
           type: Date,
-          required:true,
       },
       estado:{
           type:String,
@@ -55,17 +52,19 @@ const {Schema,model} = mongoose;
   }
   );
 
-  prjSchema.virtual('avances',{
-      ref:'avance',
-      localField: '_id',
-      foreignField: 'proyecto',
-  });
-
-  prjSchema.virtual('inscripciones',{
-    ref:'inscrito',
+  prjSchema.virtual('avances', {
+    ref: 'avance',
     localField: '_id',
     foreignField: 'proyecto',
-});
+  });
+  
+  prjSchema.virtual('inscripciones', {
+    ref: 'inscrito',
+    localField: '_id',
+    foreignField: 'proyecto',
+  });
+
+
 
   const ProjectModel = model('proyecto',prjSchema);
   export {ProjectModel};
