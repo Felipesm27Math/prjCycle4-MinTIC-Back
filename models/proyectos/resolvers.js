@@ -24,6 +24,7 @@ const resolversProyecto = {
                 nombre:args.nombre,
                 presupuesto: args.presupuesto,
                 lider: args.lider,
+                objetivos:args.objetivos,
             });
             return proyectoCreado;
         },
