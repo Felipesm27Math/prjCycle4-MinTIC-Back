@@ -5,7 +5,7 @@ const tiposInscripcion = gql`
   type Inscripcion {
     _id: ID!
     estudiante: Usuario!
-    proyecto: Proyecto!
+    proyecto: Proyecto! 
     fechaIngreso: Date
     fechaSalida: Date
     estado: Enum_EstadoInscripcion
