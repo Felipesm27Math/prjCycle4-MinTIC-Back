@@ -14,6 +14,10 @@ const resolversUsuario = {
           const estudiantesEncontrados = await UserModel.find({rol: args.rol});
           return estudiantesEncontrados;
       },
+      UsuarioFiltro: async (parent,args) => {
+          const usuarioEncontrado = await UserModel.findOne({_id:args._id});
+          return usuarioEncontrado;
+      }
      
   },
   Mutation:{

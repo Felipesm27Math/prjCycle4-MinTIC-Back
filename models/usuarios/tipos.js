@@ -18,6 +18,7 @@ const tiposUsuario = gql`
     Usuarios: [Usuario]
     Usuario(correo: String!,contrasena:String!): Usuario
     UsuarioEstudiante(rol: Enum_Rol!): [Usuario]
+    UsuarioFiltro(_id:String!):Usuario
   }
   type Mutation {
 
