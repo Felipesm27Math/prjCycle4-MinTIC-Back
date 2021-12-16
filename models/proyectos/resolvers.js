@@ -9,12 +9,22 @@ const resolversProyecto = {
                 },
                 {
                     path:"inscripciones",
-                }
+                },
+                {
+                    path:"lider",
+                },
             ]);
             return proyectos;
         },
         ProyectoLider: async (parent,args) => {
-            const proyectosLider = await ProjectModel.findOne({id: args._id});
+            const proyectosLider = await ProjectModel.findOne({id: args._id}).populate([
+                {
+                    path:"avances",
+                },
+                {
+                    path:"inscripciones",
+                }
+            ]);
             return proyectosLider;
         },
     },

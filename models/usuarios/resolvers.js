@@ -38,7 +38,7 @@ const resolversUsuario = {
       },
 
       editarDatosUsuario: async (parent,args) => {
-          const usuarioEditado = await UserModel.findOneAndUpdate(args._id,{
+          const usuarioEditado = await UserModel.findByIdAndUpdate(args._id,{
               nombre:args.nombre,
               correo:args.correo,
               identificacion:args.identificacion,

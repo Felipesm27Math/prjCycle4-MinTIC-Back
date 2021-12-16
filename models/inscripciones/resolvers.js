@@ -14,11 +14,11 @@ const resolversInscripcion= {
             return inscripcion;
         },
         BuscarInscripcion: async (parent,args) => {
-            const buscarInscripcion = await InscriptionModel.find({usuarios: args._id}).populate('estudiante').populate('proyecto');
+            const buscarInscripcion = await InscriptionModel.findOne({id: args._id}).populate('estudiante').populate('proyecto');
             return buscarInscripcion;
         },
     },
-     /* creo la mutaciones, el args me permite ubicar cada campo */
+     /* creo la mutaciones, el args me permite ubicar cada campo */ 
     Mutation:{
         crearInscripcion: async (parent,args) =>{
             const inscripcionCreada = await InscriptionModel.create({

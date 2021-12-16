@@ -35,9 +35,7 @@ const tiposUsuario = gql`
       _id: String!
       nombre: String
       identificacion: String
-      password: String
       correo: String
-      rol: Enum_Rol
       estado: Enum_EstadoUsuario
     ): Usuario
 
