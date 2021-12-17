@@ -13,6 +13,21 @@ const tiposProyecto = gql`
     tipo:Enum_TipoObjetivo!
   }
 
+  input camposObjetivo {
+    descripcion: String!
+    tipo: Enum_TipoObjetivo!
+  }
+
+  input camposProyecto {
+    nombre: String
+    presupuesto: Float
+    fechaInicio: Date
+    fechaFin: Date
+    estado: Enum_EstadoProyecto
+    fase: Enum_FaseProyecto
+    lider: String
+  }
+
   type Proyecto {
     _id:ID!
     nombre: String!
@@ -30,7 +45,7 @@ const tiposProyecto = gql`
 
   type Query {
     Proyectos: [Proyecto]
-    ProyectoLider (_id:String!):Proyecto
+    
   }
 
   type Mutation {
@@ -45,25 +60,34 @@ const tiposProyecto = gql`
         objetivos: [crearObjetivo]
     ):Proyecto
 
-    editarEstadoFase(
-      _id: String!
-      estado: Enum_EstadoProyecto
-      fase: Enum_FaseProyecto
-    ):Proyecto
+    editarProyecto(
+      _id: String!, 
+        nombre: String
+        presupuesto: Float
+        fechaInicio: Date
+        fechaFin: Date
+        lider:String
+        estado: Enum_EstadoProyecto
+        fase: Enum_FaseProyecto
+        objetivos: [crearObjetivo]
+      
+      ): Proyecto
 
+      crearObjetivo(
+        idProyecto: String!, 
+        campos: camposObjetivo!
+        ): Proyecto
 
-    editarProyectoLider(
-      _id: String!
-      nombre: String
-      objetivos: [crearObjetivo]
-      presupuesto:Float
-    ):Proyecto
+      editarObjetivo(
+        idProyecto: String!, 
+        indexObjetivo: Int!, 
+        campos: camposObjetivo!
+        ): Proyecto
 
-    crearObjetivo(
-      idProyecto: String!
-      descripcion: String!
-      tipo: Enum_TipoObjetivo!
-    ):Proyecto
+      eliminarObjetivo(
+        idProyecto: String!, 
+        idObjetivo: String!
+        ): Proyecto
 
   }
 `;

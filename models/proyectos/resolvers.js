@@ -16,17 +16,6 @@ const resolversProyecto = {
             ]);
             return proyectos;
         },
-        ProyectoLider: async (parent,args) => {
-            const proyectosLider = await ProjectModel.findOne({id: args._id}).populate([
-                {
-                    path:"avances",
-                },
-                {
-                    path:"inscripciones",
-                }
-            ]);
-            return proyectosLider;
-        },
     },
     Mutation:{
         crearProyecto: async (parent,args) => {
@@ -38,41 +27,65 @@ const resolversProyecto = {
             });
             return proyectoCreado;
         },
-
-        editarEstadoFase: async (parent,args) => {
-            const estadofaseEditado = await ProjectModel.findOneAndUpdate(args._id, {
-                estado: args.estado,
-                fase: args.fase,
-            },{new:true});
-            if (Object.keys(args).includes('estado') || Object.keys(args).includes('fase')){
-                estadofaseEditado.estado = args.estado
-                estadofaseEditado.fase = args.fase;
-            }
-            return estadofaseEditado;  
-        },
-
-        editarProyectoLider: async (parent,args) => {
-            const proyectoLiderEditado = await ProjectModel.findOneAndUpdate(args._id,{
-                nombre:args.nombre,
-                presupuesto: args.presupuesto,
-                objetivos: args.objetivos,
-            },{new:true});
-            return proyectoLiderEditado;
-        },
-
-        crearObjetivo: async (parent,args) => {
-            const proyectoObjetivoCreado = await ProjectModel.findByIdAndUpdate(args.idProyecto,{
-                $addToSet:{
-                    objetivos:{
-                        descripcion:args.descripcion,
-                        tipo: args.tipo,
-                    },
+        editarProyecto: async (parent, args) => {
+            const proyectoEditado = await ProjectModel.findByIdAndUpdate(args._id,
+              {
+              nombre: args.nombre,
+              presupuesto: args.presupuesto,
+              lider: args.lider,
+              objetivos:args.objetivos,
+              estado: args.estado,
+              fase: args.fase,
+             
+              },{ new: true }
+                );
+      
+            return proyectoEditado;
+          },
+          crearObjetivo: async (parent, args) => {
+            const proyectoConObjetivo = await ProjectModel.findByIdAndUpdate(
+              args.idProyecto,
+              {
+                $addToSet: {
+                  objetivos: { ...args.campos },
                 },
-            });
-            return proyectoObjetivoCreado;
+              },
+              { new: true }
+            );
+      
+            return proyectoConObjetivo;
+          },
+          editarObjetivo: async (parent, args) => {
+            const proyectoEditado = await ProjectModel.findByIdAndUpdate(
+              args.idProyecto,
+              {
+                $set: {
+                  [`objetivos.${args.indexObjetivo}.descripcion`]: args.campos.descripcion,
+                  [`objetivos.${args.indexObjetivo}.tipo`]: args.campos.tipo,
+                },
+              },
+              { new: true }
+            );
+            return proyectoEditado;
+          },
+          eliminarObjetivo: async (parent, args) => {
+            const proyectoObjetivo = await ProjectModel.findByIdAndUpdate(
+              { _id: args.idProyecto },
+              {
+                $pull: {
+                  objetivos: {
+                    _id: args.idObjetivo,
+                  },
+                },
+              },
+              { new: true }
+            );
+            return proyectoObjetivo;
+          },
         },
         
-    },
+
+        
 };
 
 export {resolversProyecto}

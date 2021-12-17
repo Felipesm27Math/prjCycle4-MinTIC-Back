@@ -3,8 +3,9 @@ import { UserModel } from './usuario.js';
 const resolversUsuario = {
   Query:{
       Usuarios: async (parent,args) => {
-          const usuarios = await UserModel.find();
-          return usuarios;
+          console.log(args);
+        const usuarios = await UserModel.find({...args.filtro} );
+        return usuarios;
       },     
       Usuario: async (parent,args) => {
           const usuario = await UserModel.findOne({correo:args.correo,contrasena:args.contrasena});
@@ -15,7 +16,7 @@ const resolversUsuario = {
           return estudiantesEncontrados;
       },
       UsuarioFiltro: async (parent,args) => {
-          const usuarioEncontrado = await UserModel.findOne({_id:args._id});
+          const usuarioEncontrado = await UserModel.findOne({_id: args._id});
           return usuarioEncontrado;
       }
      
