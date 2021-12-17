@@ -7,23 +7,20 @@ const {Schema,model} = mongoose;
 const advanceSchema = new Schema({
     proyecto:{
         type: Schema.Types.ObjectId,
-        required:true,
         ref: ProjectModel,
+    },
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: UserModel,
     },
     fecha: {
         type: Date,
     },
     descripcion: {
             type: String,
-            required:true,
     },
     observaciones:{
             type: String,
-    },
-    creadoPor: {
-        type: Schema.Types.ObjectId,
-        required:true,
-        ref: UserModel,
     },
 });
 

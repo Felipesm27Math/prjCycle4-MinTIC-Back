@@ -35,23 +35,27 @@ const userSchema = new Schema({
         type:String,
         enum:['PENDIENTE','AUTORIZADO','NO_AUTORIZADO'],
         default:'PENDIENTE',
-    }    
+    }
+},{
+        toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+        toObject: { virtuals: true } // So `console.log()` and other functions that use `toObject()` include virtuals
+         
 });
 
 userSchema.virtual('proyectosLiderados', {
-    ref: 'Proyecto',
+    ref: 'proyecto',
     localField: '_id',
     foreignField: 'lider',
   });
   
-  userSchema.virtual('avancesCreados', {
-    ref: 'Avance',
+  userSchema.virtual('avancescreados', {
+    ref: 'avance',
     localField: '_id',
-    foreignField: 'creadoPor',
+    foreignField: 'lider',
   });
   
   userSchema.virtual('inscripciones', {
-    ref: 'Inscripcion',
+    ref: 'inscrito',
     localField: '_id',
     foreignField: 'estudiante',
   });

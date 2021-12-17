@@ -4,14 +4,13 @@ const tiposUsuario = gql`
   type Usuario {
     _id: ID!
     nombre: String!
-    apellido: String!
     identificacion: String!
     correo: String!
     rol: Enum_Rol!
     estado: Enum_EstadoUsuario
     foto: String
     inscripciones: [Inscripcion]
-    avancesCreados: [Avance]
+    avancescreados: [Avance]
     proyectosLiderados: [Proyecto]
   }
   type Query {
